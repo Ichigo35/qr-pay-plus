@@ -15,7 +15,7 @@ import { saveQRImage, shareQRImage } from "@/lib/share";
 
 export const Route = createFileRoute("/qr/$id")({
   validateSearch: (search: Record<string, unknown>) => ({
-    amount: Math.max(0, Math.floor(Number(search.amount) || 0)),
+    amount: Math.max(0, Math.floor(Number(search['amount']) || 0)),
   }),
   head: () => ({
     meta: [
@@ -30,8 +30,8 @@ export const Route = createFileRoute("/qr/$id")({
 
 interface Generated {
   status: "valid" | "invalid";
-  dataUrl?: string;
-  error?: string;
+  dataUrl?: string | undefined;
+  error?: string | undefined;
 }
 
 function GeneratedQRScreen() {
