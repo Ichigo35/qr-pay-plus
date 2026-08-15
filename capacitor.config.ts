@@ -4,6 +4,10 @@ const config: CapacitorConfig = {
   appId: "la.qrpay.app",
   appName: "QR Pay Laos",
   webDir: "dist/client",
+  server: {
+    url: "https://lao-pay-builder.lovable.app",
+    cleartext: false,
+  },
   ios: { contentInset: "always" },
   android: { allowMixedContent: false },
   plugins: {
