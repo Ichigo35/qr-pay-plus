@@ -95,22 +95,23 @@ function ImportScreen() {
             <Images /> {t("pickImage")}
           </Button>
 
-          {settings.demoMode && (
-            <div className="space-y-2 rounded-2xl border border-dashed border-border p-4">
-              <p className="text-xs font-semibold text-muted-foreground">{t("demoMode")}</p>
-              {DEMO_QRS.map((demo) => (
-                <Button
-                  key={demo.name}
-                  variant="outline"
-                  size="touch"
-                  className="w-full"
-                  onClick={() => handlePayload(demo.payload)}
-                >
-                  {demo.name}
-                </Button>
-              ))}
-            </div>
-          )}
+          <div className="space-y-2 rounded-2xl border border-dashed border-border p-4">
+            <p className="text-xs font-semibold text-muted-foreground">
+              {settings.demoMode ? t("demoMode") : t("trySample")}
+            </p>
+            {(settings.demoMode ? DEMO_QRS : DEMO_QRS.slice(0, 1)).map((demo) => (
+              <Button
+                key={demo.name}
+                variant="outline"
+                size="touch"
+                className="w-full"
+                onClick={() => handlePayload(demo.payload)}
+              >
+                {demo.name}
+              </Button>
+            ))}
+          </div>
+
 
           <p className="flex items-start gap-2 pt-2 text-xs text-muted-foreground">
             <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" />
