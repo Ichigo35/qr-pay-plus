@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as ImportRouteImport } from './routes/import'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as QrsRouteImport } from './routes/qrs'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as PayIdRouteImport } from './routes/pay.$id'
+import { Route as QrIdRouteImport } from './routes/qr.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportRoute = ImportRouteImport.update({
+  id: '/import',
+  path: '/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrsRoute = QrsRouteImport.update({
+  id: '/qrs',
+  path: '/qrs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PayIdRoute = PayIdRouteImport.update({
+  id: '/pay/$id',
+  path: '/pay/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrIdRoute = QrIdRouteImport.update({
+  id: '/qr/$id',
+  path: '/qr/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/history': typeof HistoryRoute
+  '/import': typeof ImportRoute
+  '/onboarding': typeof OnboardingRoute
+  '/qrs': typeof QrsRoute
+  '/settings': typeof SettingsRoute
+  '/pay/$id': typeof PayIdRoute
+  '/qr/$id': typeof QrIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/history': typeof HistoryRoute
+  '/import': typeof ImportRoute
+  '/onboarding': typeof OnboardingRoute
+  '/qrs': typeof QrsRoute
+  '/settings': typeof SettingsRoute
+  '/pay/$id': typeof PayIdRoute
+  '/qr/$id': typeof QrIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/history': typeof HistoryRoute
+  '/import': typeof ImportRoute
+  '/onboarding': typeof OnboardingRoute
+  '/qrs': typeof QrsRoute
+  '/settings': typeof SettingsRoute
+  '/pay/$id': typeof PayIdRoute
+  '/qr/$id': typeof QrIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/history'
+    | '/import'
+    | '/onboarding'
+    | '/qrs'
+    | '/settings'
+    | '/pay/$id'
+    | '/qr/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/history'
+    | '/import'
+    | '/onboarding'
+    | '/qrs'
+    | '/settings'
+    | '/pay/$id'
+    | '/qr/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/history'
+    | '/import'
+    | '/onboarding'
+    | '/qrs'
+    | '/settings'
+    | '/pay/$id'
+    | '/qr/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HistoryRoute: typeof HistoryRoute
+  ImportRoute: typeof ImportRoute
+  OnboardingRoute: typeof OnboardingRoute
+  QrsRoute: typeof QrsRoute
+  SettingsRoute: typeof SettingsRoute
+  PayIdRoute: typeof PayIdRoute
+  QrIdRoute: typeof QrIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/import': {
+      id: '/import'
+      path: '/import'
+      fullPath: '/import'
+      preLoaderRoute: typeof ImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qrs': {
+      id: '/qrs'
+      path: '/qrs'
+      fullPath: '/qrs'
+      preLoaderRoute: typeof QrsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pay/$id': {
+      id: '/pay/$id'
+      path: '/pay/$id'
+      fullPath: '/pay/$id'
+      preLoaderRoute: typeof PayIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr/$id': {
+      id: '/qr/$id'
+      path: '/qr/$id'
+      fullPath: '/qr/$id'
+      preLoaderRoute: typeof QrIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HistoryRoute: HistoryRoute,
+  ImportRoute: ImportRoute,
+  OnboardingRoute: OnboardingRoute,
+  QrsRoute: QrsRoute,
+  SettingsRoute: SettingsRoute,
+  PayIdRoute: PayIdRoute,
+  QrIdRoute: QrIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
