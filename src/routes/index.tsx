@@ -63,10 +63,17 @@ function HomeScreen() {
       <section className="mb-6">
         <h2 className="mb-3 text-sm font-semibold text-muted-foreground">{t("savedQrs")}</h2>
         {list.length === 0 ? (
-          <p className="rounded-2xl border border-dashed border-border p-5 text-center text-sm text-muted-foreground">
-            {t("noSavedQrs")}
-          </p>
+          <div className="space-y-3 rounded-2xl border border-dashed border-border p-5 text-sm">
+            <p className="text-center text-muted-foreground">{t("noSavedQrs")}</p>
+            <p className="font-semibold">{t("howItWorks")}</p>
+            <ol className="space-y-1 text-muted-foreground">
+              <li>{t("step1")}</li>
+              <li>{t("step2")}</li>
+              <li>{t("step3")}</li>
+            </ol>
+          </div>
         ) : (
+
           <ul className="space-y-2">
             {list.map((qr) => (
               <li key={qr.id}>
