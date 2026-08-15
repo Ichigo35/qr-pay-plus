@@ -14,15 +14,21 @@ const buttonVariants = cva(
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        ghost: "hover:bg-secondary hover:text-secondary-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        hero: "bg-brand text-primary-foreground shadow-lift active:scale-[0.98]",
+        accent: "bg-accent text-accent-foreground shadow-card active:scale-[0.98]",
+        soft: "bg-secondary text-secondary-foreground active:scale-[0.98]",
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
+        touch: "h-14 rounded-2xl px-6 text-base font-semibold [&_svg]:size-5",
+        block: "h-16 w-full rounded-2xl px-6 text-lg font-semibold [&_svg]:size-6",
       },
+
     },
     defaultVariants: {
       variant: "default",
