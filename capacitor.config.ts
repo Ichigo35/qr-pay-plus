@@ -3,11 +3,10 @@ import type { CapacitorConfig } from "@capacitor/cli";
 const config: CapacitorConfig = {
   appId: "la.qrpay.app",
   appName: "QR Pay Laos",
+  // Build with `npm run build:mobile` before `npx cap sync` — it produces a
+  // self-contained dist/client (real index.html, no remote server.url) that
+  // Capacitor bundles into the native app so it runs fully offline.
   webDir: "dist/client",
-  server: {
-    url: "https://lao-pay-builder.lovable.app",
-    cleartext: false,
-  },
   ios: { contentInset: "always" },
   android: { allowMixedContent: false },
   plugins: {

@@ -114,6 +114,9 @@ function GeneratedQRScreen() {
           <div className="text-center">
             <p className="text-xs font-medium text-muted-foreground">{t("amountToPay")}</p>
             <p className="tabular text-4xl font-bold tracking-tight">{formatKip(amount)}</p>
+            <p className="mx-auto mt-2 max-w-xs text-xs text-muted-foreground">
+              {t("manualAmountHint")}
+            </p>
           </div>
 
           <div className="rounded-3xl bg-card p-4 shadow-lift">

@@ -84,6 +84,8 @@ const fr = {
   processing: "Analyse en cours…",
   unnamed: "Bénéficiaire",
   mobileOnly: "Application mobile",
+  manualAmountHint:
+    "Certaines applications bancaires ne préremplissent pas encore le montant automatiquement. Montrez ce montant à votre client pour qu'il le saisisse lui-même.",
 };
 
 type Dict = typeof fr;
@@ -164,6 +166,8 @@ const en: Dict = {
   processing: "Analysing…",
   unnamed: "Beneficiary",
   mobileOnly: "Mobile app",
+  manualAmountHint:
+    "Some banking apps don't auto-fill the amount yet. Show this amount to your customer so they can enter it themselves.",
 };
 
 const lo: Dict = {
@@ -240,6 +244,8 @@ const lo: Dict = {
   processing: "ກຳລັງວິເຄາະ…",
   unnamed: "ຜູ້ຮັບເງິນ",
   mobileOnly: "ແອັບມືຖື",
+  manualAmountHint:
+    "ບາງແອັບທະນາຄານຍັງບໍ່ຕື່ມຈຳນວນເງິນອັດຕະໂນມັດ. ໃຫ້ລູກຄ້າເບິ່ງຈຳນວນນີ້ ແລະ ພິມເອງ.",
 };
 
 export const translations: Record<Language, Dict> = { fr, en, lo };

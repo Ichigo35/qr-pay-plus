@@ -128,10 +128,12 @@ function injectAmount(raw: string, amount: number): InjectResult {
   const parsed = parse(raw);
   if (!parsed.ok) return { ok: false, message: parsed.message };
 
-  // LAK (418) et devises sans décimales -> entier. Sinon 2 décimales.
-  const code = parsed.data.currencyCode;
-  const zeroDecimal = code === null || code === "418";
-  const value = zeroDecimal ? String(Math.round(amount)) : amount.toFixed(2);
+  // Les scanneurs LAPNet/EMVCo laotiens (ex. BCEL) attendent le tag 54 au
+  // format "X.XX" même pour le kip (LAK, 418) — confirmé en comparant avec
+  // un QR marchand BCEL réel ("17500.00"). Un entier sans décimale ("20000")
+  // est ignoré silencieusement par ces scanneurs : le compte est reconnu
+  // mais le montant n'est pas pré-rempli.
+  const value = amount.toFixed(2);
   if (value.length > AMOUNT_MAX_LENGTH) {
     return { ok: false, message: "Montant trop élevé pour ce format de QR." };
   }
