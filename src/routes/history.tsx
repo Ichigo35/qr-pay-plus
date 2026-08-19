@@ -1,5 +1,6 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { LayoutDashboard } from "lucide-react";
 import { MobileShell } from "@/components/mobile-shell";
 import { Button } from "@/components/ui/button";
 import { useT } from "@/lib/app-context";
@@ -10,7 +11,10 @@ export const Route = createFileRoute("/history")({
   head: () => ({
     meta: [
       { title: "Historique des paiements — QR Pay Laos" },
-      { name: "description", content: "Historique local des QR de paiement générés sur ce mobile." },
+      {
+        name: "description",
+        content: "Historique local des QR de paiement générés sur ce mobile.",
+      },
       { property: "og:title", content: "Historique des paiements" },
       { property: "og:description", content: "Regénérez un QR à partir d'une entrée passée." },
     ],
@@ -26,7 +30,18 @@ function HistoryScreen() {
   const list = entries ?? [];
 
   return (
-    <MobileShell title={t("history")}>
+    <MobileShell
+      title={t("history")}
+      action={
+        <Link
+          to="/dashboard"
+          aria-label={t("dashboard")}
+          className="flex size-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground"
+        >
+          <LayoutDashboard className="size-5" />
+        </Link>
+      }
+    >
       {list.length === 0 ? (
         <p className="rounded-2xl border border-dashed border-border p-6 text-center text-sm text-muted-foreground">
           {t("emptyHistory")}
